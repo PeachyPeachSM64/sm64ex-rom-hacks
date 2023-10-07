@@ -1,0 +1,42 @@
+ALIGNED8 const u8 texture_jrb_1_0xe009010_custom[] = {
+#include "levels/jrb/jrb_1_0xe009010_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe008010_custom[] = {
+#include "levels/jrb/jrb_1_0xe008010_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe00a010_custom[] = {
+#include "levels/jrb/jrb_1_0xe00a010_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe001810_custom[] = {
+#include "levels/jrb/jrb_1_0xe001810_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe005010_custom[] = {
+#include "levels/jrb/jrb_1_0xe005010_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe003810_custom[] = {
+#include "levels/jrb/jrb_1_0xe003810_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe001010_custom[] = {
+#include "levels/jrb/jrb_1_0xe001010_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe006810_custom[] = {
+#include "levels/jrb/jrb_1_0xe006810_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0x9005000_custom[] = {
+#include "levels/jrb/jrb_1_0x9005000_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe004810_custom[] = {
+#include "levels/jrb/jrb_1_0xe004810_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe007810_custom[] = {
+#include "levels/jrb/jrb_1_0xe007810_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe002810_custom[] = {
+#include "levels/jrb/jrb_1_0xe002810_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe000010_custom[] = {
+#include "levels/jrb/jrb_1_0xe000010_custom.rgba16.inc.c"
+};
+ALIGNED8 const u8 texture_jrb_1_0xe005810_custom[] = {
+#include "levels/jrb/jrb_1_0xe005810_custom.rgba16.inc.c"
+};
