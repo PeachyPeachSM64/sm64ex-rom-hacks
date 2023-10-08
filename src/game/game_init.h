@@ -72,10 +72,10 @@ void thread5_game_loop(UNUSED void *arg);
 void clear_framebuffer(s32 color);
 void clear_viewport(Vp *viewport, s32 color);
 void make_viewport_clip_rect(Vp *viewport);
-void init_rcp(void);
+void init_render_image(void);
 void end_master_display_list(void);
 void render_init(void);
-void select_gfx_pool(void);
+void config_gfx_pool(void);
 void display_and_vsync(void);
 
 #ifdef USE_SYSTEM_MALLOC

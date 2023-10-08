@@ -794,7 +794,7 @@ s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepAr
 #ifdef BETTER_WALL_COLLISION
     if ((stepArg & AIR_STEP_CHECK_LEDGE_GRAB) && (upperWall.numWalls == 0) && (lowerWall.numWalls != 0)) {
         for ((i = 0); (i < lowerWall.numWalls); (i++)) if ((grabbedWall = check_ledge_grab(m, grabbedWall, lowerWall.walls[i], intendedPos, nextPos, ledgePos, &ledgeFloor)) != NULL) stepResult = AIR_STEP_GRABBED_LEDGE;
-        if ((stepResult == AIR_STEP_GRABBED_LEDGE) && (grabbedWall != NULL) && (ledgeFloor != NULL) && (ledgePos != NULL)) {
+        if ((stepResult == AIR_STEP_GRABBED_LEDGE) && (grabbedWall != NULL) && (ledgeFloor != NULL)) {
             vec3f_copy(m->pos, ledgePos);
             m->floor        = ledgeFloor;
             m->floorHeight  = ledgePos[1];

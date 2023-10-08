@@ -191,7 +191,7 @@ static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode, struc
             continue;
         }
     hasCollision:
-        if (data->numWalls < MAX_REFEREMCED_WALLS) data->walls[data->numWalls++] = surf;
+        if (data->numWalls < MAX_REFERENCED_WALLS) data->walls[data->numWalls++] = surf;
         numCols++;
     }
  //#if EXTENDED_BOUNDS_MODE > 1
@@ -276,7 +276,7 @@ static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode, struc
         z += (surf->normal.z * (radius - offset));
         data->x = x;
         data->z = z;
-        if (data->numWalls < MAX_REFEREMCED_WALLS) data->walls[data->numWalls++] = surf;
+        if (data->numWalls < MAX_REFERENCED_WALLS) data->walls[data->numWalls++] = surf;
         numCols++;
     }
     return numCols;
@@ -625,51 +625,6 @@ f32 find_floor_height(f32 x, f32 y, f32 z) {
     struct Surface *floor;
 
     f32 floorHeight = find_floor(x, y, z, &floor);
-
-    return floorHeight;
-}
-
-/**
- * Find the highest static floor under a given position.
- */
-
-f32 find_static_floor(f32 x, f32 y, f32 z, struct Surface **pfloor) {
-    struct SurfaceNode *surfaceList;
-    struct Surface *floor;
-    f32 floorHeight = FLOOR_LOWER_LIMIT;
-
-    if (is_outside_level_bounds(x, z)) return floorHeight;
-
-    // Each level is split into cells to limit load, find the appropriate cell.
-    s32 cellX = (((s32)x + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & NUM_CELLS_INDEX;
-    s32 cellZ = (((s32)z + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & NUM_CELLS_INDEX;
-
-    surfaceList = gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS].next;
-    floor = find_floor_from_list(surfaceList, x, y, z, &floorHeight);
-
-    *pfloor = floor;
-
-    return floorHeight;
-}
-
-/**
- * Find the highest dynamic floor under a given position.
- */
-f32 find_dynamic_floor(f32 x, f32 y, f32 z, struct Surface **pfloor) {
-    struct SurfaceNode *surfaceList;
-    struct Surface *floor;
-    f32 floorHeight = FLOOR_LOWER_LIMIT;
-
-    if (is_outside_level_bounds(x, z)) return floorHeight;
-
-    // Each level is split into cells to limit load, find the appropriate cell.
-    s32 cellX = (((s32)x + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & NUM_CELLS_INDEX;
-    s32 cellZ = (((s32)z + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & NUM_CELLS_INDEX;
-
-    surfaceList = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS].next;
-    floor = find_floor_from_list(surfaceList, x, y, z, &floorHeight);
-
-    *pfloor = floor;
 
     return floorHeight;
 }

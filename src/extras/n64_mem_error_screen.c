@@ -93,7 +93,7 @@ void thread5_mem_error_message_loop(UNUSED void *arg) {
     render_init();
 
     while (1) {
-        select_gfx_pool();
+        config_gfx_pool();
         addr = level_script_execute(addr);
         display_and_vsync();
     }

@@ -12,7 +12,7 @@ struct WallCollisionData {
     /*0x0C*/ f32 offsetY;
     /*0x10*/ f32 radius;
     /*0x16*/ s16 numWalls;
-    /*0x18*/ struct Surface *walls[MAX_REFEREMCED_WALLS];
+    /*0x18*/ struct Surface *walls[MAX_REFERENCED_WALLS];
 };
 
 s32 f32_find_wall_collision(f32 *xPtr, f32 *yPtr, f32 *zPtr, f32 offsetY, f32 radius);
@@ -20,8 +20,6 @@ s32 find_wall_collisions(struct WallCollisionData *colData);
 f32 find_ceil(f32 posX, f32 posY, f32 posZ, struct Surface **pceil);
 s32 floor_type_exists_in_current_cell(f32  xPos, f32  zPos, s16 type, u32 dynamic);
 f32 find_floor_height(f32 x, f32 y, f32 z);
-f32 find_static_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor);
-f32 find_dynamic_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor);
 f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor);
 f32 find_room_floor(f32 xPos, f32  yPos, f32 zPos, struct Surface **pfloor);
 f32 find_water_level_and_floor(f32 x, f32 z, struct Surface **pfloor);

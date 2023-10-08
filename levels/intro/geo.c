@@ -71,7 +71,7 @@ const GeoLayout intro_geo_mario_head_regular[] = {
         GEO_OPEN_NODE(),
             GEO_NODE_ORTHO(100),
             GEO_OPEN_NODE(),
-                GEO_ASM(0, geo_intro_regular_backdrop),
+                GEO_ASM(0, geo_intro_backdrop),
 #if QOL_FEATURE_MARIO_HEAD_EASTER_EGG
                 GEO_ASM(0, geo_intro_face_easter_egg),
 #endif
@@ -137,7 +137,7 @@ const GeoLayout intro_geo_000414[] = {
         GEO_OPEN_NODE(),
             GEO_NODE_ORTHO(100),
             GEO_OPEN_NODE(),
-                GEO_ASM(0, geo_intro_regular_backdrop),
+                GEO_ASM(0, geo_intro_backdrop),
             GEO_CLOSE_NODE(),
         GEO_CLOSE_NODE(),
         GEO_ZBUFFER(1),

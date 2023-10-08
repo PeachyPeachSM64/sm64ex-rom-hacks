@@ -123,7 +123,7 @@
 #endif
 
 // Maximum number of walls to check (vanilla is 4, higher is recommended)
-#define MAX_REFEREMCED_WALLS 16
+#define MAX_REFERENCED_WALLS 16
 
 // Include steep floors when checking for walls when underwater
 // This fixes the weirdness caused by swimming into such slopes (as seen with the JRB pillars in vanilla)

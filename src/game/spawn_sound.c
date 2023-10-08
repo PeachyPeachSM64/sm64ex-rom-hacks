@@ -75,7 +75,7 @@ void cur_obj_play_sound_2(s32 soundMagic) {
         if (soundMagic == SOUND_OBJ_POUNDING_LOUD) {
             queue_rumble_data(3, 60);
         }
-        if (soundMagic == SOUND_OBJ_WHOMP) {
+        if (soundMagic == SOUND_OBJ_WHOMP_LOWPRIO) {
             queue_rumble_data(5, 80);
         }
 #endif

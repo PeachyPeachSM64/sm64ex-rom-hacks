@@ -4,7 +4,7 @@
 #include "types.h"
 
 // amp
-extern const GeoLayout dAmpGeo[];
+extern const GeoLayout amp_geo[];
 extern const Gfx dAmpElectricityDl[];
 extern const Gfx dAmpEyeDl[];
 extern const Gfx dAmpMouthDl[];
