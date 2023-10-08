@@ -177,7 +177,7 @@ index b961ca52..adfde049 100644
   */
 @@ -684,6 +836,7 @@ void thread5_game_loop(UNUSED void *arg) {
          audio_game_loop_tick();
-         select_gfx_pool();
+         config_gfx_pool();
          read_controller_inputs();
 +        recordingDemo();
          addr = level_script_execute(addr);

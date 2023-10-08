@@ -35,7 +35,7 @@ s16 gCurrCourseNum;
 s16 gCurrActNum;
 s16 gCurrAreaIndex = SM74_MODE_NORMAL;
 s16 gSavedCourseNum;
-s16 gMenuOptSelectIndex;
+s16 gPauseScreenMode;
 s16 gSaveOptSelectIndex;
 
 struct SpawnInfo *gMarioSpawnInfo = &gPlayerSpawnInfos[0];
@@ -393,15 +393,15 @@ void render_game(void) {
 
         gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, BORDER_HEIGHT, SCREEN_WIDTH,
                       SCREEN_HEIGHT - BORDER_HEIGHT);
-        gMenuOptSelectIndex = render_menus_and_dialogs();
+        gPauseScreenMode = render_menus_and_dialogs();
 
 #ifdef TARGET_N3DS
         gDPForceFlush(gDisplayListHead++); // flush dialog/menus
         gDPSet2d(gDisplayListHead++, 0); // reset 2D mode
 #endif
 
-        if (gMenuOptSelectIndex != MENU_OPT_NONE) {
-            gSaveOptSelectIndex = gMenuOptSelectIndex;
+        if (gPauseScreenMode != MENU_OPT_NONE) {
+            gSaveOptSelectIndex = gPauseScreenMode;
         }
 
         if (D_8032CE78 != NULL) {

@@ -1461,7 +1461,7 @@ void update_mario_inputs(struct MarioState *m) {
     // These 3 flags are defined by Bowser stomping attacks
     if (m->marioObj->oInteractStatus
         & (INT_STATUS_MARIO_STUNNED | INT_STATUS_MARIO_KNOCKBACK_DMG | INT_STATUS_MARIO_SHOCKWAVE)) {
-        m->input |= INPUT_STOMPED;
+        m->input |= INPUT_UNKNOWN_10;
     }
 
     // This function is located near other unused trampoline functions,

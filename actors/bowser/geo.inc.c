@@ -383,7 +383,7 @@ const GeoLayout bowser_geo[] = {
 };
 
 // 0x0D000B18 / 0B40
-const GeoLayout bowser_geo_no_shadow[] = {
+const GeoLayout bowser2_geo[] = {
    GEO_NODE_START(),
    GEO_OPEN_NODE(),
       GEO_ASM(0, geo_update_layer_transparency),

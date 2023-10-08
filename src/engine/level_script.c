@@ -922,7 +922,7 @@ struct LevelCommand *level_script_execute(struct LevelCommand *cmd) {
     }
 
     profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
-    init_rcp();
+    init_render_image();
     render_game();
 #ifdef TOUCH_CONTROLS
     render_touch_controls();

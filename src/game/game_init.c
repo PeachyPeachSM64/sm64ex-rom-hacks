@@ -290,7 +290,7 @@ void create_gfx_task_structure(void) {
 /**
  * Set default RCP (Reality Co-Processor) settings.
  */
-void init_rcp(void) {
+void init_render_image(void) {
     move_segment_table_to_dmem();
     init_rdp();
     init_rsp();
@@ -353,7 +353,7 @@ void render_init(void) {
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->buffer;
     gGfxPoolEnd = (u8 *)(gGfxPool->buffer + GFX_POOL_SIZE);
-    init_rcp();
+    init_render_image();
     clear_frame_buffer(0);
     end_master_display_list();
     exec_display_list(&gGfxPool->spTask);
@@ -377,7 +377,7 @@ Gfx **alloc_next_dl(void) {
 /**
  * Selects the location of the F3D output buffer (gDisplayListHead).
  */
-void select_gfx_pool(void) {
+void config_gfx_pool(void) {
     gGfxPool = &gGfxPools[gGlobalTimer % ARRAY_COUNT(gGfxPools)];
     set_segment_base_addr(1, gGfxPool->buffer);
     gGfxSPTask = &gGfxPool->spTask;
@@ -762,7 +762,7 @@ void game_loop_one_iteration(void) {
         }
 
         audio_game_loop_tick();
-        select_gfx_pool();
+        config_gfx_pool();
         read_controller_inputs();
         levelCommandAddr = level_script_execute(levelCommandAddr);
 

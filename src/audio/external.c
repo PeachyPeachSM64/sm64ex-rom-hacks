@@ -22,7 +22,7 @@
 
 // N.B. sound banks are different from the audio banks referred to in other
 // files. We should really fix our naming to be less ambiguous...
-#define MAX_BACKGROUND_MUSIC_QUEUE_SIZE 6
+#define MAX_BG_MUSIC_QUEUE_SIZE 6
 #define MAX_CHANNELS_PER_SOUND_BANK 1
 
 #define SEQUENCE_NONE 0xFF
@@ -414,7 +414,7 @@ struct SoundCharacteristics sSoundBanks[SOUND_BANK_COUNT][40];
 u8 sSoundMovingSpeed[SOUND_BANK_COUNT];
 u8 sBackgroundMusicTargetVolume;
 static u8 sLowerBackgroundMusicVolume;
-struct SequenceQueueItem sBackgroundMusicQueue[MAX_BACKGROUND_MUSIC_QUEUE_SIZE];
+struct SequenceQueueItem sBackgroundMusicQueue[MAX_BG_MUSIC_QUEUE_SIZE];
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
 s32 unk_sh_8034754C;
@@ -1803,6 +1803,10 @@ static void seq_player_play_sequence(u8 player, u8 seqId, u16 arg2) {
 #endif
 }
 
+void play_sequence(u8 player, u8 seqId, u16 arg2) {
+    seq_player_play_sequence(player, seqId, arg2);
+}
+
 /**
  * Called from threads: thread5_game_loop
  */
@@ -2203,7 +2207,7 @@ void sound_init(void) {
         }
     }
 
-    for (i = 0; i < MAX_BACKGROUND_MUSIC_QUEUE_SIZE; i++) {
+    for (i = 0; i < MAX_BG_MUSIC_QUEUE_SIZE; i++) {
         sBackgroundMusicQueue[i].priority = 0;
     }
 
@@ -2422,7 +2426,7 @@ void play_music(u8 player, u16 seqArgs, u16 fadeTimer) {
     }
     
     // Abort if the queue is already full.
-    if (sBackgroundMusicQueueSize == MAX_BACKGROUND_MUSIC_QUEUE_SIZE) {
+    if (sBackgroundMusicQueueSize == MAX_BG_MUSIC_QUEUE_SIZE) {
         return;
     }
 

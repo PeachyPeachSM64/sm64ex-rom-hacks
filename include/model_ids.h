@@ -414,7 +414,7 @@
 #define MODEL_BOWSER_SMOKE                0x66        // bowser_impact_smoke_geo
 #define MODEL_BOWSER_FLAMES               0x67        // bowser_flames_geo
 #define MODEL_BOWSER_WAVE                 0x68        // invisible_bowser_accessory_geo
-#define MODEL_BOWSER_NO_SHADOW            0x69        // bowser_geo_no_shadow
+#define MODEL_BOWSER2                     0x69        // bowser2_geo
 
 // group 13
 #define MODEL_BUB                         0x64        // cheep_cheep_geo
@@ -530,7 +530,7 @@
 #define MODEL_KOOPA_WITHOUT_SHELL         0xBF        // koopa_without_shell_geo
 #define MODEL_GOOMBA                      0xC0        // goomba_geo
 #define MODEL_SEAWEED                     0xC1        // seaweed_geo
-#define MODEL_AMP                         0xC2        // dAmpGeo
+#define MODEL_AMP                         0xC2        // amp_geo
 #define MODEL_BOBOMB_BUDDY                0xC3        // bobomb_buddy_geo
 // find me
 // find me

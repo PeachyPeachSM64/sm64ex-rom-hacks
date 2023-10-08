@@ -1039,13 +1039,13 @@ s32 play_mode_normal(void) {
 }
 
 s32 play_mode_paused(void) {
-    if (gMenuOptSelectIndex == MENU_OPT_NONE) {
+    if (gPauseScreenMode == MENU_OPT_NONE) {
         set_menu_mode(MENU_MODE_RENDER_PAUSE_SCREEN);
-    } else if (gMenuOptSelectIndex == MENU_OPT_DEFAULT) {
+    } else if (gPauseScreenMode == MENU_OPT_DEFAULT) {
         raise_background_noise(1);
         gCameraMovementFlags &= ~CAM_MOVE_PAUSE_SCREEN;
         set_play_mode(PLAY_MODE_NORMAL);
-    } else if (gMenuOptSelectIndex == MENU_OPT_EXIT_COURSE) {
+    } else if (gPauseScreenMode == MENU_OPT_EXIT_COURSE) {
         if (gDebugLevelSelect) {
             fade_into_special_warp(-9, 1);
         } else {
@@ -1053,7 +1053,7 @@ s32 play_mode_paused(void) {
             fade_into_special_warp(0, 0);
             gSavedCourseNum = COURSE_NONE;
         }
-    } else if (gMenuOptSelectIndex == 3) {
+    } else if (gPauseScreenMode == 3) {
         if (gCurrAreaIndex == SM74_MODE_NORMAL) {
             gCurrAreaIndex = sWarpDest.areaIdx = SM74_MODE_EXTREME;
             initiate_warp(gCurrLevelNum, SM74_MODE_EXTREME, 10, 0);

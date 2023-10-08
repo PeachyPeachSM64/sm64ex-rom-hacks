@@ -220,7 +220,7 @@ static s8 *introBackgroundTables[] = { introBackgroundIndexTable };
 /**
  * Geo callback to render the intro background tiles
  */
-Gfx *geo_intro_regular_backdrop(s32 state, struct GraphNode *node, UNUSED void *context) {
+Gfx *geo_intro_backdrop(s32 state, struct GraphNode *node, UNUSED void *context) {
     struct GraphNodeMore *graphNode = (struct GraphNodeMore *) node;
     s32 index = graphNode->unk18 & 0xff; // TODO: word at offset 0x18 of struct GraphNode (always ends up being 0)
     s8 *backgroundTable = introBackgroundTables[index];
@@ -337,7 +337,7 @@ Gfx *intro_backdrop_set_image(f32 x, f32 y, s8 index) {
     return displayList;
 }
 
-Gfx *geo_intro_regular_backdrop(s32 state, struct GraphNode *node, UNUSED void *context) {
+Gfx *geo_intro_backdrop(s32 state, struct GraphNode *node, UNUSED void *context) {
     struct GraphNodeMore *graphNode;
     Gfx *displayList;
     Gfx *displayListIter;
