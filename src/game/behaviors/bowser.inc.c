@@ -1631,7 +1631,7 @@ void bowser_held_update(void) {
         // Throw action won't be played until he's actually released
         case BOWSER_GRAB_STATUS_NONE:
             cur_obj_play_sound_2(SOUND_OBJ_BOWSER_TAIL_PICKUP);
-            cur_obj_unrender_set_action_and_anim(BOWSER_ANIM_GRABBED, BOWSER_ACT_THROWN);
+            cur_obj_unrender_and_reset_state(BOWSER_ANIM_GRABBED, BOWSER_ACT_THROWN);
             o->oBowserGrabbedStatus++;
             break;
         // After the grabbed animation ends, play shaking animation in a loop

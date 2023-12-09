@@ -613,7 +613,7 @@ void bhv_ukiki_loop(void) {
             break;
 
         case HELD_HELD:
-            cur_obj_unrender_set_action_and_anim(UKIKI_ANIM_HELD, 0);
+            cur_obj_unrender_and_reset_state(UKIKI_ANIM_HELD, 0);
             obj_copy_pos(o, gMarioObject);
 
             if (o->oBehParams2ndByte == UKIKI_CAP) {

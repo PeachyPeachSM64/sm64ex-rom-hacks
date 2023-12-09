@@ -400,7 +400,7 @@ void bhv_king_bobomb_loop(void) {
             king_bobomb_move();
             break;
         case HELD_HELD:
-            cur_obj_unrender_set_action_and_anim(6, 1);
+            cur_obj_unrender_and_reset_state(6, 1);
             break;
         case HELD_THROWN:
         case HELD_DROPPED:

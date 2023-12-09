@@ -151,7 +151,7 @@ s32 cur_obj_check_frame_prior_current_frame(s16 *a0);
 s32 mario_is_in_air_action(void);
 s32 mario_is_dive_sliding(void);
 void cur_obj_set_y_vel_and_animation(f32 sp18, s32 sp1C);
-void cur_obj_unrender_set_action_and_anim(s32 sp18, s32 sp1C);
+void cur_obj_unrender_and_reset_state(s32 sp18, s32 sp1C);
 void cur_obj_get_thrown_or_placed(f32 forwardVel, f32 velY, s32 thrownAction);
 void cur_obj_get_dropped(void);
 void cur_obj_set_model(s32 modelID);
