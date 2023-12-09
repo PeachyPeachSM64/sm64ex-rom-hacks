@@ -27,4 +27,9 @@ void stub_behavior_script_2(void);
 
 void cur_obj_update(void);
 
+// Extra functions
+void obj_set_model(struct Object *obj, s32 modelID);
+s32 obj_has_model(struct Object *obj, u16 modelID);
+s32 obj_get_model(struct Object *obj);
+
 #endif // BEHAVIOR_SCRIPT_H
