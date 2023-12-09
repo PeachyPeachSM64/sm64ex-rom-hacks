@@ -1073,7 +1073,7 @@ void cur_obj_set_y_vel_and_animation(f32 yVel, s32 animIndex) {
     cur_obj_init_animation_with_sound(animIndex);
 }
 
-void cur_obj_unrender_set_action_and_anim(s32 animIndex, s32 action) {
+void cur_obj_unrender_and_reset_state(s32 animIndex, s32 action) {
     cur_obj_become_intangible();
     cur_obj_disable_rendering();
     

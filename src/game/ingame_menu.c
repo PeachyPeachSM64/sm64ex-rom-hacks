@@ -122,7 +122,7 @@ u8 gDialogCharWidths[256] = { // TODO: Is there a way to auto generate this?
 #endif
 
 s8 gDialogBoxState = MENU_STATE_DEFAULT;
-f32 gDialogBoxAngle = DIALOG_BOX_ANGLE_DEFAULT;
+f32 gDialogBoxOpenTimer = DIALOG_BOX_ANGLE_DEFAULT;
 f32 gDialogBoxScale = DIALOG_BOX_SCALE_DEFAULT;
 s16 gDialogScrollOffsetY = 0;
 s8 gDialogBoxType = DIALOG_TYPE_ROTATE;
@@ -1018,7 +1018,7 @@ void reset_dialog_render_state(void) {
     }
 
     gDialogBoxScale = DIALOG_BOX_SCALE_DEFAULT;
-    gDialogBoxAngle = DIALOG_BOX_ANGLE_DEFAULT;
+    gDialogBoxOpenTimer = DIALOG_BOX_ANGLE_DEFAULT;
     gDialogBoxState = MENU_STATE_DEFAULT;
     gDialogID = DIALOG_NONE;
     gDialogTextPos = 0;
@@ -1049,15 +1049,15 @@ void render_dialog_box_type(struct DialogEntry *dialog, s8 linesPerBox) {
                 sInterpolatedDialogRotationPos = gDisplayListHead;
                 if (gDialogBoxState == MENU_STATE_DIALOG_OPENING) {
                     sInterpolatedDialogScale = gDialogBoxScale - 2 / 2;
-                    sInterpolatedDialogRotation = gDialogBoxAngle - 7.5f / 2;
+                    sInterpolatedDialogRotation = gDialogBoxOpenTimer - 7.5f / 2;
                 } else {
                     sInterpolatedDialogScale = gDialogBoxScale + 2 / 2;
-                    sInterpolatedDialogRotation = gDialogBoxAngle + 7.5f / 2;
+                    sInterpolatedDialogRotation = gDialogBoxOpenTimer + 7.5f / 2;
                 }
 #endif
                 create_dl_scale_matrix(MENU_MTX_NOPUSH, 1.0 / gDialogBoxScale, 1.0 / gDialogBoxScale, 1.0f);
                 // convert the speed into angle
-                create_dl_rotation_matrix(MENU_MTX_NOPUSH, gDialogBoxAngle * 4.0f, 0, 0, 1.0f);
+                create_dl_rotation_matrix(MENU_MTX_NOPUSH, gDialogBoxOpenTimer * 4.0f, 0, 0, 1.0f);
             }
             gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 150);
             break;
@@ -1834,20 +1834,20 @@ void render_dialog_entries(void) {
 
     switch (gDialogBoxState) {
         case MENU_STATE_DIALOG_OPENING:
-            if (gDialogBoxAngle == DIALOG_BOX_ANGLE_DEFAULT) {
+            if (gDialogBoxOpenTimer == DIALOG_BOX_ANGLE_DEFAULT) {
                 play_dialog_sound(gDialogID);
                 play_sound(SOUND_MENU_MESSAGE_APPEAR, gGlobalSoundSource);
             }
 
             if (gDialogBoxType == DIALOG_TYPE_ROTATE) {
-                gDialogBoxAngle -= 7.5;
+                gDialogBoxOpenTimer -= 7.5;
                 gDialogBoxScale -= 1.5;
             } else {
-                gDialogBoxAngle -= 10.0;
+                gDialogBoxOpenTimer -= 10.0;
                 gDialogBoxScale -= 2.0;
             }
 
-            if (gDialogBoxAngle == 0.0f) {
+            if (gDialogBoxOpenTimer == 0.0f) {
                 gDialogBoxState = MENU_STATE_DIALOG_OPEN;
                 gDialogLineNum = 1;
             }
@@ -1857,7 +1857,7 @@ void render_dialog_entries(void) {
             break;
 
         case MENU_STATE_DIALOG_OPEN:
-            gDialogBoxAngle = 0.0f;
+            gDialogBoxOpenTimer = 0.0f;
 
             if ((gPlayer3Controller->buttonPressed & A_BUTTON)
              || (gPlayer3Controller->buttonPressed & B_BUTTON)) {
@@ -1888,7 +1888,7 @@ void render_dialog_entries(void) {
             break;
 
         case MENU_STATE_DIALOG_CLOSING:
-            if (gDialogBoxAngle == 20.0f) {
+            if (gDialogBoxOpenTimer == 20.0f) {
                 level_set_transition(0, NULL);
                 play_sound(SOUND_MENU_MESSAGE_DISAPPEAR, gGlobalSoundSource);
 
@@ -1899,10 +1899,10 @@ void render_dialog_entries(void) {
                 gDialogResponse = gDialogLineNum;
             }
 
-            gDialogBoxAngle += 10.0f;
+            gDialogBoxOpenTimer += 10.0f;
             gDialogBoxScale += 2.0f;
 
-            if (gDialogBoxAngle == DIALOG_BOX_ANGLE_DEFAULT) {
+            if (gDialogBoxOpenTimer == DIALOG_BOX_ANGLE_DEFAULT) {
                 gDialogBoxState = MENU_STATE_DEFAULT;
                 gDialogID = DIALOG_NONE;
                 gDialogTextPos = 0;

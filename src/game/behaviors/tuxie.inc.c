@@ -308,7 +308,7 @@ void bhv_small_penguin_loop(void) {
             small_penguin_free_actions();
             break;
         case HELD_HELD:
-            cur_obj_unrender_set_action_and_anim(0, 0);
+            cur_obj_unrender_and_reset_state(0, 0);
             if (cur_obj_has_behavior(bhvPenguinBaby)) {
                 obj_set_behavior(o, bhvSmallPenguin);
             }

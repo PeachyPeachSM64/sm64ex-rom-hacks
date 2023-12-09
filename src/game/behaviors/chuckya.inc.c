@@ -258,7 +258,7 @@ void bhv_chuckya_loop(void) {
             chuckya_move();
             break;
         case HELD_HELD:
-            cur_obj_unrender_set_action_and_anim(2, 0);
+            cur_obj_unrender_and_reset_state(2, 0);
             break;
         case HELD_THROWN:
         case HELD_DROPPED:

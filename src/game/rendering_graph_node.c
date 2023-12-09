@@ -1628,7 +1628,7 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
         vec3s_set(viewport->vp.vtrans, node->x * 4, node->y * 4, 511);
         vec3s_set(viewport->vp.vscale, node->width * 4, node->height * 4, 511);
         if (b != NULL) {
-            clear_framebuffer(clearColor);
+            clear_frame_buffer(clearColor);
 #ifdef HIGH_FPS_PC
             viewportInterpolated = alloc_display_list(sizeof(*viewportInterpolated));
             interpolate_vectors_s16(viewportInterpolated->vp.vtrans, sPrevViewport.vp.vtrans, b->vp.vtrans);
@@ -1643,7 +1643,7 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
         }
 
         else if (c != NULL) {
-            clear_framebuffer(clearColor);
+            clear_frame_buffer(clearColor);
             make_viewport_clip_rect(c);
         }
 #ifdef HIGH_FPS_PC
