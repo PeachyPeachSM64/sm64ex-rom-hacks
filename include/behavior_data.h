@@ -600,6 +600,7 @@ extern const BehaviorScript bhvCustomSMSRSpaceBox[];
 extern const BehaviorScript bhvCustomSMSRSpaceOctagonPlatform[];
 extern const BehaviorScript bhvCustomSMSRSpaceRedPlatform[];
 extern const BehaviorScript bhvCustomSMSRBulletMine[];
+extern const BehaviorScript bhvCustomSMSRPlayMusicAt130Stars[];
 
 #ifdef PORT_MOP_OBJS
 #include "src/extras/mop/include_behaviors.h"

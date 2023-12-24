@@ -5299,7 +5299,7 @@ const BehaviorScript bhvChainChomp[] = {
     SET_HOME(),
     SET_FLOAT(oGraphYOffset, 240),
     SCALE(/*Unused*/ 0, /*Field*/ 200),
-    //SPAWN_CHILD_WITH_PARAM(/*Bhv param*/ 0, /*Model*/ MODEL_WOODEN_POST, /*Behavior*/ bhvWoodenPost),
+    SPAWN_CHILD_WITH_PARAM(/*Bhv param*/ 0, /*Model*/ MODEL_WOODEN_POST, /*Behavior*/ bhvWoodenPost),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_chain_chomp_update),
     END_LOOP(),
@@ -7016,6 +7016,21 @@ const BehaviorScript bhvCustomSMSRBulletMine[] = {
         BEGIN(OBJ_LIST_PLAYER), // uhh...
         BEGIN(OBJ_LIST_PLAYER),
         BEGIN(OBJ_LIST_PLAYER),
+    END_LOOP(),
+};
+
+// copy of bhvMadPiano
+const BehaviorScript bhvCustomSMSRPlayMusicAt130Stars[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    DROP_TO_FLOOR(),
+    LOAD_ANIMATIONS(oAnimations, mad_piano_seg5_anims_05009B14),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 40, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    SET_HOME(),
+    ADD_INT(oMoveAngleYaw, 0x4000),
+    CALL_NATIVE(bhv_init_room),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_mad_piano_update),
     END_LOOP(),
 };
 

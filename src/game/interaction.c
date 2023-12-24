@@ -345,14 +345,14 @@ void mario_stop_riding_and_holding(struct MarioState *m) {
     }
 }
 
-u32 does_mario_have_normal_cap_on_head(struct MarioState *m) {
+u32 does_mario_have_hat(struct MarioState *m) {
     return (m->flags & (MARIO_CAPS | MARIO_CAP_ON_HEAD)) == (MARIO_NORMAL_CAP | MARIO_CAP_ON_HEAD);
 }
 
 void mario_blow_off_cap(struct MarioState *m, f32 capSpeed) {
     struct Object *capObject;
 
-    if (does_mario_have_normal_cap_on_head(m)) {
+    if (does_mario_have_hat(m)) {
         save_file_set_cap_pos(m->pos[0], m->pos[1], m->pos[2]);
 
         m->flags &= ~(MARIO_NORMAL_CAP | MARIO_CAP_ON_HEAD);
@@ -372,7 +372,7 @@ void mario_blow_off_cap(struct MarioState *m, f32 capSpeed) {
 u32 mario_lose_cap_to_enemy(u32 arg) {
     u32 wasWearingCap = FALSE;
 
-    if (does_mario_have_normal_cap_on_head(gMarioState)) {
+    if (does_mario_have_hat(gMarioState)) {
         save_file_set_flags(arg == 1 ? SAVE_FLAG_CAP_ON_KLEPTO : SAVE_FLAG_CAP_ON_UKIKI);
         gMarioState->flags &= ~(MARIO_NORMAL_CAP | MARIO_CAP_ON_HEAD);
         wasWearingCap = TRUE;

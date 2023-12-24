@@ -193,7 +193,7 @@ OBJECT_WITH_ACTS(137,2695,6645,-1625,0,0,0,0x0, bhvExclamationBox,31),
 OBJECT_WITH_ACTS(116,3315,2585,-2843,0,0,0,0x0, bhvOneCoin,31),
 OBJECT_WITH_ACTS(116,3315,2574,-158,0,0,0,0x0, bhvOneCoin,31),
 OBJECT_WITH_ACTS(0,5576,-354,-3568,0,315,180,0x0, bhvDoorWarp,31),
-OBJECT_WITH_ACTS(0,-6013,-521,1952,0,0,0,0x0, bhvMadPiano,31),
+OBJECT_WITH_ACTS(0,-6013,-521,1952,0,0,0,0x0, bhvCustomSMSRPlayMusicAt130Stars,31),
 RETURN()
 };
 const LevelScript local_warps_castle_grounds_1_[] = {
