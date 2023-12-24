@@ -7,6 +7,7 @@ default: all
 
 # Preprocessor definitions
 DEFINES :=
+CUSTOM_C_DEFINES :=
 
 #==============================================================================#
 # Build Options                                                                #
@@ -646,7 +647,6 @@ GLOBAL_ASM_DEP = $(BUILD_DIR)/src/audio/non_matching_dep
 endif
 
 ###################### Custom Defines ########################
-CUSTOM_C_DEFINES :=
 
 ifeq ($(TARGET_N64),0)
 
