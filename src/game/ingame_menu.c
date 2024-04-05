@@ -2598,12 +2598,12 @@ void render_pause_castle_main_strings(s16 x, s16 y) {
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
 	// Draw some title text for version name
-	u8 sm74EE[] = { TEXT_SM74EE };
-	u8 sm74[] = { TEXT_SM74 };
+	u8 text_sm74EE[] = { TEXT_SM74EE };
+	u8 text_sm74[] = { TEXT_SM74 };
 	if (gCurrAreaIndex == SM74_MODE_NORMAL) {
-		print_generic_string(x + 90, y , sm74);
+		print_generic_string(x + 90, y , text_sm74);
 	} else if (gCurrAreaIndex == SM74_MODE_EXTREME) {
-		print_generic_string(x + 75, y , sm74EE);
+		print_generic_string(x + 75, y , text_sm74EE);
 	}
 
 	y -= 18;
