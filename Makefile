@@ -553,7 +553,7 @@ endif
 include Makefile.split
 
 # Source code files
-LEVEL_C_FILES := $(wildcard levels/*/leveldata.c) $(wildcard levels/*/script.c) $(wildcard levels/*/geo.c)
+LEVEL_C_FILES := $(wildcard levels/*/leveldata.c) $(wildcard levels/*/script.c) $(wildcard levels/*/geo.c) $(wildcard levels/*/custom.geo.c) $(wildcard levels/*/custom.script.c) $(wildcard levels/*/custom.leveldata.c)
 C_FILES       := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)) $(LEVEL_C_FILES)
 CXX_FILES     := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.cpp))
 S_FILES       := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.s))
@@ -1438,12 +1438,10 @@ endif
 TEXTURE_ENCODING := u8
 
 ifeq ($(EXTERNAL_DATA),1)
-$(BUILD_DIR)/%: %.png
+$(BUILD_DIR)/%.inc.c: %.png
 	$(call print,Converting:,$<,$@)
-	$(V)$(ZEROTERM) "$(patsubst %.png,%,$^)" > $@
-$(BUILD_DIR)/%.inc.c: $(BUILD_DIR)/% %.png
-	$(call print,Converting:,$<,$@)
-	$(V)hexdump -v -e '1/1 "0x%X,"' $< > $@
+	$(V)$(ZEROTERM) "$(patsubst %.png,%,$^)" > $@.raw
+	$(V)hexdump -v -e '1/1 "0x%X,"' $@.raw > $@
 else
 $(BUILD_DIR)/%: %.png
 	$(call print,Converting:,$<,$@)
