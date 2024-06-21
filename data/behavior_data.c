@@ -6488,13 +6488,15 @@ const BehaviorScript bhvCustomSMSRStoneCubePlatform[] = {
 
 extern const Collision custom_collision_door_30_stars[];
 
+extern void bhv_custom_smsr_30_star_door_wall_init(void);
+
 // copy of bhvHiddenAt120Stars with different collision
 const BehaviorScript bhvCustomSMSR30StarDoorWall[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     LOAD_COLLISION_DATA(custom_collision_door_30_stars),
     SET_FLOAT(oCollisionDistance, 4000),
-    CALL_NATIVE(bhv_dorrie_update), // replaced
+    CALL_NATIVE(bhv_custom_smsr_30_star_door_wall_init),
     BEGIN_LOOP(),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
