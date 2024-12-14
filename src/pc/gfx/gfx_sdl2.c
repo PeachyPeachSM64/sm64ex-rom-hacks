@@ -40,6 +40,10 @@
 #include "src/pc/controller/controller_keyboard.h"
 #include "src/pc/controller/controller_touchscreen.h"
 
+#ifdef TARGET_SWITCH
+#include <switch.h>
+#endif
+
 // TODO: figure out if this shit even works
 #ifdef VERSION_EU
 # define FRAMERATE 25
@@ -382,8 +386,8 @@ static inline void sync_framerate_with_timer(void) {
     if (frame_length < frame_rate) {
         // Only sleep if we have time to spare
         const double remain = frame_rate - frame_length;
-        // Sleep remaining time away
-        sys_sleep(remain / perf_freq * 1000000.0);
+        // Sleep remaining time away (convert remain to microseconds)
+        usleep(remain / perf_freq * 1000000.0);
         // Assume we slept the required amount of time to keep the timer stable
         frame_time = now + remain;
     } else {

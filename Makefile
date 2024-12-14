@@ -318,7 +318,7 @@ else ifeq ($(VERSION),sh)
   VERSION_JP_US  ?= false
 endif
 
-TARGET := sm64.$(VERSION).$(GRUCODE)
+TARGET := smsr.$(VERSION).$(GRUCODE)
 
 # GRUCODE - selects which RSP microcode to use.
 #   f3d_old - First version the Fast3D (Originally in JP - US)
@@ -866,9 +866,9 @@ ifeq ($(TARGET_SWITCH),1)
   CXX := $(CROSS)g++
   STRIP := $(CROSS)strip
   NXARCH := -march=armv8-a+crc+crypto -mtune=cortex-a57 -mtp=soft -fPIE
-  APP_TITLE := Super Mario 64
-  APP_AUTHOR := Nintendo, n64decomp team, sm64pc team
-  APP_VERSION := 1_master_$(VERSION)
+  APP_TITLE := Super Mario Star Road
+  APP_AUTHOR := PeachyPeach, Skelux, Kaze
+  APP_VERSION := ver_$(VERSION)
   APP_ICON := $(PLATFORM_DIR)/logo.jpg
   INCLUDE_DIRS += $(LIBNX)/include $(PORTLIBS)/include
   OPT_FLAGS := -O2
