@@ -1123,7 +1123,7 @@ void audio_reset_session(void) {
 
 #if defined(VERSION_JP) || defined(VERSION_US)
     if (gAudioLoadLock != AUDIO_LOCK_UNINITIALIZED) {
-	    s32 frames;
+        s32 frames;
         decrease_reverb_gain();
         for (i = 0; i < gMaxSimultaneousNotes; i++) {
             if (gNotes[i].enabled && gNotes[i].adsr.state != ADSR_STATE_DISABLED) {
@@ -1164,15 +1164,15 @@ void audio_reset_session(void) {
         gAudioLoadLock = AUDIO_LOCK_LOADING;
         wait_for_audio_frames(3);
 
-        #ifdef TARGET_N64
-	s32 remainingDmas = gCurrAudioFrameDmaCount;
+    #ifdef TARGET_N64
+        s32 remainingDmas = gCurrAudioFrameDmaCount;
         while (remainingDmas > 0) {
             for (i = 0; i < gCurrAudioFrameDmaCount; i++) {
                 if (osRecvMesg(&gCurrAudioFrameDmaQueue, NULL, OS_MESG_NOBLOCK) == 0)
                     remainingDmas--;
             }
         }
-        #endif
+    #endif
         gCurrAudioFrameDmaCount = 0;
 
         for (j = 0; j < NUMAIBUFFERS; j++) {
